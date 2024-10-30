@@ -12,7 +12,8 @@ module.exports = {
     configure: {
       resolve: {
         fallback: {
-          path: require.resolve("path-browserify"),
+									 fs: false,
+          path: false,
 										'@testing/string-number': require.resolve("@testing/string-number")
         },
       },

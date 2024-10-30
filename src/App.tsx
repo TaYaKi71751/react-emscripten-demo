@@ -1,39 +1,50 @@
 import React,{ useState } from 'react';
-import Module from '@testing/string-number';
+const Module = require('@testing/string-number');
 
-var __module__:any = null;
-
-async function getModule(){
-	let module:any = Module;
-	if(!__module__){
-		module()
-			.then((m:any)=>{
-				__module__ = m;
+async function add(a,b){
+	return await new Promise((resolve,reject) => {
+		Module()
+			.then((_Module)=>{
+				const _init = _Module.cwrap('__SAFE_CALC_INIT__','undefined',['string','string','string']);
+				const _add = _Module.cwrap('__ADD_INTEGER__','string',['string','string']);
+				const _sub = _Module.cwrap('__SUB_INTEGER__','string',['string','string']);
+				const _mul = _Module.cwrap('__MUL_INTEGER__','string',['string','string']);
+				_init('-','','0123456789abcdef')
+				const r = _add(a,b);
+				resolve(r);
 			})
-	}
-	return __module__;
+	});
 }
 
-async function add(a:string,b:string){
-	let m:any = await getModule();
-	const aPTR = m.allocateUTF8OnStack(a);
-	const bPTR = m.allocateUTF8OnStack(b);
-	const rPTR = m.ccall('__ADD_INTEGER__','number',['number','number'],[aPTR,bPTR]);
-	const r = m.UTF8ToString(rPTR);
-	m._free(rPTR);
-	m = undefined;
-	return r;
+async function sub(a,b){
+	return await new Promise((resolve,reject) => {
+		Module()
+			.then((_Module)=>{
+				const _init = _Module.cwrap('__SAFE_CALC_INIT__','undefined',['string','string','string']);
+				const _add = _Module.cwrap('__ADD_INTEGER__','string',['string','string']);
+				const _sub = _Module.cwrap('__SUB_INTEGER__','string',['string','string']);
+				const _mul = _Module.cwrap('__MUL_INTEGER__','string',['string','string']);
+				_init('-','','0123456789abcdef')
+
+				const r = _sub(a,b);
+				resolve(r);
+			})
+	});
 }
 
-async function sub(a:string,b:string){
-	let m:any = await getModule();
-	const aPTR = m.allocateUTF8OnStack(a);
-	const bPTR = m.allocateUTF8OnStack(b);
-	const rPTR = m.ccall('__SUB_INTEGER__','number',['number','number'],[aPTR,bPTR]);
-	const r = m.UTF8ToString(rPTR);
-	m._free(rPTR);
-	m = undefined;
-	return r;
+async function mul(a,b){
+	return await new Promise((resolve,reject) => {
+		Module()
+			.then((_Module)=>{
+				const _init = _Module.cwrap('__SAFE_CALC_INIT__','undefined',['string','string','string']);
+				const _add = _Module.cwrap('__ADD_INTEGER__','string',['string','string']);
+				const _sub = _Module.cwrap('__SUB_INTEGER__','string',['string','string']);
+				const _mul = _Module.cwrap('__MUL_INTEGER__','string',['string','string']);
+				_init('-','','0123456789abcdef')
+				const r = _mul(a,b);
+				resolve(r);
+			})
+	});
 }
 
 function App() {
@@ -41,16 +52,19 @@ function App() {
 	const [inputB,setInputB] = useState("0");
 	const [resultAdd,setResultAdd] = useState("0");
 	const [resultSub,setResultSub] = useState("0");
+	const [resultMul,setResultMul] = useState("0");
 	const handleA = (event:any) => {
 		const _inputA = `${event.target.value || inputA}`;
 		setInputA(`${event.target.value || inputA}`);
 		add(`${_inputA}`,`${inputB}`).then((r:any)=>setResultAdd(`${r}`));
 		sub(`${_inputA}`,`${inputB}`).then((r:any)=>setResultSub(`${r}`));
+		mul(`${_inputA}`,`${inputB}`).then((r:any)=>setResultMul(`${r}`));
 	}
 	const handleB = (event:any) => {
 		const _inputB = `${event.target.value || inputB}`;
 		add(`${inputA}`,`${_inputB}`).then((r:any)=>setResultAdd(`${r}`));
 		sub(`${inputA}`,`${_inputB}`).then((r:any)=>setResultSub(`${r}`));
+		mul(`${inputA}`,`${_inputB}`).then((r:any)=>setResultMul(`${r}`));
 		setInputB(`${event.target.value || inputB}`);
 	}
   return (
@@ -59,6 +73,7 @@ function App() {
 			<input type="text" value={inputB} onChange={handleB}/>
 			<div className={"result add"}>({inputA}) + ({inputB}) = {resultAdd}</div>
 			<div className={"result sub"}>({inputA}) - ({inputB}) = {resultSub}</div>
+			<div className={"result mul"}>({inputA}) * ({inputB}) = {resultMul}</div>
 		</>
   );
 }
