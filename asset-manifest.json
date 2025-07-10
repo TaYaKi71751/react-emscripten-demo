@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/react-emscripten-demo/static/js/main.05deed3d.js",
+    "static/js/453.a63e99bf.chunk.js": "/react-emscripten-demo/static/js/453.a63e99bf.chunk.js",
+    "index.html": "/react-emscripten-demo/index.html",
+    "main.05deed3d.js.map": "/react-emscripten-demo/static/js/main.05deed3d.js.map",
+    "453.a63e99bf.chunk.js.map": "/react-emscripten-demo/static/js/453.a63e99bf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.05deed3d.js"
+  ]
+}
