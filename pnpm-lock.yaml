@@ -19,7 +19,7 @@ importers:
         version: 13.5.0(@testing-library/dom@8.20.1)
       '@testing/string-number':
         specifier: github:TaYaKi71751/string-number
-        version: https://codeload.github.com/TaYaKi71751/string-number/tar.gz/cc873ba91076f56bdf702ef67931d6dfc2a5dfda
+        version: https://codeload.github.com/TaYaKi71751/string-number/tar.gz/c61414ae6684018a9e73ca4889c67c376b27b84c
       '@types/jest':
         specifier: ^27.5.2
         version: 27.5.2
@@ -1194,8 +1194,8 @@ packages:
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
 
-  '@testing/string-number@https://codeload.github.com/TaYaKi71751/string-number/tar.gz/cc873ba91076f56bdf702ef67931d6dfc2a5dfda':
-    resolution: {tarball: https://codeload.github.com/TaYaKi71751/string-number/tar.gz/cc873ba91076f56bdf702ef67931d6dfc2a5dfda}
+  '@testing/string-number@https://codeload.github.com/TaYaKi71751/string-number/tar.gz/c61414ae6684018a9e73ca4889c67c376b27b84c':
+    resolution: {tarball: https://codeload.github.com/TaYaKi71751/string-number/tar.gz/c61414ae6684018a9e73ca4889c67c376b27b84c}
     version: 0.0.0
 
   '@tootallnate/once@1.1.2':
@@ -7139,7 +7139,7 @@ snapshots:
       '@babel/runtime': 7.27.6
       '@testing-library/dom': 8.20.1
 
-  '@testing/string-number@https://codeload.github.com/TaYaKi71751/string-number/tar.gz/cc873ba91076f56bdf702ef67931d6dfc2a5dfda':
+  '@testing/string-number@https://codeload.github.com/TaYaKi71751/string-number/tar.gz/c61414ae6684018a9e73ca4889c67c376b27b84c':
     dependencies:
       emscripten: 0.0.2-beta
       mkdirp: 1.0.4
