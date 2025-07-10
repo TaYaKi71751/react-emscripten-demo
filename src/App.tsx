@@ -55,7 +55,7 @@ function App() {
 	const [resultMul,setResultMul] = useState("0");
 	const handleA = (event:any) => {
 		const _inputA = `${event.target.value || inputA}`;
-		setInputA(`${event.target.value || inputA}`);
+		setInputA(`${event.target.value || inputA}`.replaceAll(/[^\-0-9-]/g,''));
 		try {
 			add(`${_inputA}`,`${inputB}`).then((r:any)=>setResultAdd(`${r}`));
 			sub(`${_inputA}`,`${inputB}`).then((r:any)=>setResultSub(`${r}`));
@@ -73,7 +73,7 @@ function App() {
 		} catch (e) {
 			console.error(e);
 		}
-		setInputB(`${event.target.value || inputB}`);
+		setInputB(`${event.target.value || inputB}`.replaceAll(/[^\-0-9-]/g,''));
 	}
   return (
 		<>
