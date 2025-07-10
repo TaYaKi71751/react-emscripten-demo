@@ -2,6 +2,7 @@
   "name": "react-emscripten-demo",
   "version": "0.0.0",
   "private": true,
+		"homepage": "https://tayaki71751.github.io/react-emscripten-demo",
   "dependencies": {
     "@testing/string-number": "github:TaYaKi71751/string-number",
     "@testing-library/jest-dom": "^5.16.5",
