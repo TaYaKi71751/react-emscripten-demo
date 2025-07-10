@@ -9,7 +9,7 @@ async function add(a,b){
 				const _add = _Module.cwrap('__ADD_INTEGER__','string',['string','string']);
 				const _sub = _Module.cwrap('__SUB_INTEGER__','string',['string','string']);
 				const _mul = _Module.cwrap('__MUL_INTEGER__','string',['string','string']);
-				_init('-','','0123456789abcdef')
+				_init('-','','0123456789')
 				const r = _add(a,b);
 				resolve(r);
 			})
@@ -24,7 +24,7 @@ async function sub(a,b){
 				const _add = _Module.cwrap('__ADD_INTEGER__','string',['string','string']);
 				const _sub = _Module.cwrap('__SUB_INTEGER__','string',['string','string']);
 				const _mul = _Module.cwrap('__MUL_INTEGER__','string',['string','string']);
-				_init('-','','0123456789abcdef')
+				_init('-','','0123456789')
 
 				const r = _sub(a,b);
 				resolve(r);
@@ -40,7 +40,7 @@ async function mul(a,b){
 				const _add = _Module.cwrap('__ADD_INTEGER__','string',['string','string']);
 				const _sub = _Module.cwrap('__SUB_INTEGER__','string',['string','string']);
 				const _mul = _Module.cwrap('__MUL_INTEGER__','string',['string','string']);
-				_init('-','','0123456789abcdef')
+				_init('-','','0123456789')
 				const r = _mul(a,b);
 				resolve(r);
 			})
@@ -56,15 +56,23 @@ function App() {
 	const handleA = (event:any) => {
 		const _inputA = `${event.target.value || inputA}`;
 		setInputA(`${event.target.value || inputA}`);
-		add(`${_inputA}`,`${inputB}`).then((r:any)=>setResultAdd(`${r}`));
-		sub(`${_inputA}`,`${inputB}`).then((r:any)=>setResultSub(`${r}`));
-		mul(`${_inputA}`,`${inputB}`).then((r:any)=>setResultMul(`${r}`));
+		try {
+			add(`${_inputA}`,`${inputB}`).then((r:any)=>setResultAdd(`${r}`));
+			sub(`${_inputA}`,`${inputB}`).then((r:any)=>setResultSub(`${r}`));
+			mul(`${_inputA}`,`${inputB}`).then((r:any)=>setResultMul(`${r}`));
+		} catch (e) {
+			console.error(e);
+		}
 	}
 	const handleB = (event:any) => {
 		const _inputB = `${event.target.value || inputB}`;
-		add(`${inputA}`,`${_inputB}`).then((r:any)=>setResultAdd(`${r}`));
-		sub(`${inputA}`,`${_inputB}`).then((r:any)=>setResultSub(`${r}`));
-		mul(`${inputA}`,`${_inputB}`).then((r:any)=>setResultMul(`${r}`));
+		try {
+			add(`${inputA}`,`${_inputB}`).then((r:any)=>setResultAdd(`${r}`));
+			sub(`${inputA}`,`${_inputB}`).then((r:any)=>setResultSub(`${r}`));
+			mul(`${inputA}`,`${_inputB}`).then((r:any)=>setResultMul(`${r}`));
+		} catch (e) {
+			console.error(e);
+		}
 		setInputB(`${event.target.value || inputB}`);
 	}
   return (
